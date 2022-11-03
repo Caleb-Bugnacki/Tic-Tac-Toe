@@ -22,7 +22,7 @@ int main() {
     int x {2};
 
     
-    char board[9]= {' ', ' ', ' ', ' ', ' ',' ',' ', ' ',' '}; // array representing the game board
+    char board[9]= {' ', ' ', ' ', ' ', ' ',' ',' ', ' ',' '}; // vector representing the game board
     cout << "Welcome to Tic-Tac-Toe!" << endl ;
     cout << "The integer values used to indicate locations on the Tic-Tac-Toe board are shown below." << endl;
     displayBoardLocations(); // displays the board with the selection numbers for users to define their selected locations to place either an X or an O
