@@ -1,9 +1,7 @@
-//
 //  main.cpp
 //  tic-tac-toe
-//
 //  Created by Caleb Bugnacki on 10/29/22.
-//
+//  This program simulates a game of tic-tac-toe between two players 
 
 #include <iostream>
 #include<cstdlib>
@@ -18,30 +16,30 @@ int checkWinner(char board[]);
 
 
 int main() {
-    // insert code here...
+
     int p1GridLocation{0};
     char ticOrTac = ' ';
     int x {2};
 
     
-    char board[9]= {' ', ' ', ' ', ' ', ' ',' ',' ', ' ',' '};
+    char board[9]= {' ', ' ', ' ', ' ', ' ',' ',' ', ' ',' '}; // array representing the game board
     cout << "Welcome to Tic-Tac-Toe!" << endl ;
     cout << "The integer values used to indicate locations on the Tic-Tac-Toe board are shown below." << endl;
     displayBoardLocations(); // displays the board with the selection numbers for users to define their selected locations to place either an X or an O
 
     for (int i = 1 ; i <= 9 ; i++){ // iterates until the Tic-Tac-Toe board is filled
         
-        /* this if/else statement below is used to alternate turns between player 1 and player 2
+        /* The if/else statement below is used to alternate turns between player 1 and player 2
            by checking if the turn is even or odd. If the turn is odd, it is player 1's turn else it is player 2's turn. */
         
-        if (i % 2 != 0){
+        if (i % 2 != 0){ // odd = player 1's turn
             cout << "Player 1, enter location on grid to place an X: ";
-            cin >> p1GridLocation;
+            cin >> p1GridLocation; // get user input
             ticOrTac = 'X' ;
         }
-        else {
+        else { // even = player 2's turn
             cout << "Player 2, enter location on grid to place an O: ";
-            cin >> p1GridLocation;
+            cin >> p1GridLocation; // get user input
             ticOrTac = 'O' ;
         }
         // validates input and places an X or O in a user selected location of board
@@ -102,7 +100,7 @@ void displayBoardLocations(){
 }
 // checks that board space is not already occupied and places insert an X or an O into the selected board location
 void checkAndPlace(int locationChoice, char XorO , char board[]){
-    switch (board[locationChoice]){
+    switch (board[locationChoice]){ // cases validate that the user selected board space is not already occupied by a char 'X','x','O','o'
         case 'X':
             cout << "Location already taken, try again." << endl;
             break;
@@ -115,7 +113,7 @@ void checkAndPlace(int locationChoice, char XorO , char board[]){
         case 'x':
             cout << "Location already taken, try again." << endl;
             break;
-        default:
+        default: // board space is unoccupied
             board[locationChoice] = XorO;
             break;
             
@@ -123,6 +121,8 @@ void checkAndPlace(int locationChoice, char XorO , char board[]){
 }
 // cases to check for winner
 int checkWinner(char board[]){
+    //  checks for all possible winning cases for player 1
+    // returns 0 if player 1 wins, 1 if player 2 wins,, and 0 if neither player wins
     if (board[0] == 'X' && board[1] == 'X' && board[2] == 'X'){
         cout << "X's Win!" << endl;
         return 0;
@@ -151,6 +151,7 @@ int checkWinner(char board[]){
         cout << "X's Win" << endl;
         return 0;
     }
+    // checks for all possible winning cases for player 2
     else if (board[0] == 'O' && board[1] == 'O' && board[2] == 'O'){
         cout << "O's Win!" << endl;
         return 1;
@@ -179,7 +180,7 @@ int checkWinner(char board[]){
         cout << "O's Win" << endl;
         return 1;
     }
-    else
+    else // if neither player 1 nor player 2 win, the game is a draw
         return 2;
 }
 
